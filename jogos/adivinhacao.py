@@ -25,7 +25,7 @@ def hello():
 
     return total_de_tentativas
 
-def main():
+def jogar():
     
     total_de_tentativas = hello()
     
@@ -65,5 +65,5 @@ def main():
 
     print("Fim do jogo")
 
-
-main()
+if (__name__ == "__main__"):
+    jogar()
