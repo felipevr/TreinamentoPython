@@ -14,8 +14,9 @@ def jogar():
     
     hello()
     
+    branco = '_'
     palavra_secreta = "banana" #sempre minuscula
-    letras_acertadas = ["_"] * len(palavra_secreta)
+    letras_acertadas = [branco] * len(palavra_secreta)
 
     enforcou = False
     acertou = False
@@ -35,6 +36,11 @@ def jogar():
             index += 1
 
         print(letras_acertadas)
+        letras_faltando = letras_acertadas.count(branco)
+        if (letras_faltando == 0):
+            break
+
+        print( 'Ainda faltam acertar {} letras'.format(letras_faltando))
         #print("Jogando...")
 
 
