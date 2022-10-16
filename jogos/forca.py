@@ -14,14 +14,11 @@ def hello():
 def pega_palavra_secreta():
     #lista = ['banana', 'maça', 'abacate', 'limão', 'laranja', 'melancia', 'lima', 'jaca', 'açai']
     lista = []
-    arquivo = open("palavras.txt", "r")
 
-    for linha in arquivo:
-        linha = linha.strip()
-        lista.append(linha)
+    with open("palavras.txt") as arquivo:
+        lista = [linha.strip() for linha in arquivo]
 
-    arquivo.close()
-
+    #print(lista)
     index = random.randrange(0,len(lista))
 
     return lista[index].lower()
@@ -38,6 +35,7 @@ def jogar():
     enforcou = False
     acertou = False
     erros = 0
+    max_erros = 6
 
     print(letras_acertadas)
 
@@ -54,8 +52,10 @@ def jogar():
                     #print("Encontrei a letra {} na posição {}".format(letra, index))
                 index += 1
         else:
-            print("Ops, você errou! Faltam {} tentativas.".format(6-erros))
             erros += 1
+            if (erros < max_erros):
+                print("Ops, você errou! Faltam {} tentativas.".format(max_erros-erros))
+            
             
 
         print(letras_acertadas)
@@ -75,6 +75,7 @@ def jogar():
         print('VOCÊ GANHOU ! ! !')
     else:
         print('ENFORCADO!!!')
+        print('A palavra era ', palavra_secreta)
 
     #print("Fim do jogo")
 
