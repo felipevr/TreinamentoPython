@@ -19,22 +19,15 @@ def jogar():
     print(letras_acertadas)
 
     while(not acertou and not enforcou):
-        chute = input("Qual letra? ")
-        chute = chute.strip().lower()
+        
+        chute = pede_chute()
 
-
-        index = 0
         if (chute in palavra_secreta):
-            for letra in palavra_secreta:
-                if (chute == letra):
-                    letras_acertadas[index] = letra
-                    #print("Encontrei a letra {} na posição {}".format(letra, index))
-                index += 1
+            marca_chute_correto(chute, palavra_secreta, letras_acertadas)
         else:
             erros += 1
             if (erros < max_erros):
                 print("Ops, você errou! Faltam {} tentativas.".format(max_erros-erros))
-            
             
 
         print(letras_acertadas)
@@ -48,16 +41,27 @@ def jogar():
 
         #letras_faltando = letras_acertadas.count(branco)
         #print( 'Ainda faltam acertar {} letras'.format(letras_faltando))
-        #print("Jogando...")
+        
+    imprime_msg_final(acertou, palavra_secreta)
 
+def imprime_msg_final(acertou, palavra_secreta):
     if (acertou):
         print('VOCÊ GANHOU ! ! !')
     else:
         print('ENFORCADO!!!')
         print('A palavra era ', palavra_secreta)
 
-    #print("Fim do jogo")
+def marca_chute_correto(chute, palavra_secreta, letras_acertadas):
+    index = 0
+    for letra in palavra_secreta:
+                if (chute == letra):
+                    letras_acertadas[index] = letra
+                    #print("Encontrei a letra {} na posição {}".format(letra, index))
+                index += 1
 
+def pede_chute():
+    chute = input("Qual letra? ")
+    return chute.strip().lower()
 
 def gera_letras_acertadas(palavra, branco = '_'):
     return [branco for letra in palavra]
