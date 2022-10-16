@@ -3,34 +3,13 @@
 # https://cursos.alura.com.br/course/python-3-avancando-na-linguagem/
 import random
 
-def hello():
-
-    print(""" 
-    *************************************
-    * Bem vindo ao jogo de Forca! *
-    *************************************
-    """)
-
-def pega_palavra_secreta():
-    #lista = ['banana', 'maça', 'abacate', 'limão', 'laranja', 'melancia', 'lima', 'jaca', 'açai']
-    lista = []
-
-    with open("palavras.txt") as arquivo:
-        lista = [linha.strip() for linha in arquivo]
-
-    #print(lista)
-    index = random.randrange(0,len(lista))
-
-    return lista[index].lower()
-
 def jogar():
     
-    hello()
+    mensagem_boas_vindas()
     
     branco = '_'
     palavra_secreta = pega_palavra_secreta() #sempre minuscula
-    #letras_acertadas = [branco] * len(palavra_secreta)
-    letras_acertadas = ["_" for letra in palavra_secreta]
+    letras_acertadas = gera_letras_acertadas(palavra_secreta, branco)
 
     enforcou = False
     acertou = False
@@ -78,6 +57,31 @@ def jogar():
         print('A palavra era ', palavra_secreta)
 
     #print("Fim do jogo")
+
+
+def gera_letras_acertadas(palavra, branco = '_'):
+    return [branco for letra in palavra]
+
+def mensagem_boas_vindas():
+
+    print(""" 
+    *************************************
+    * Bem vindo ao jogo de Forca! *
+    *************************************
+    """)
+
+def pega_palavra_secreta():
+    #lista = ['banana', 'maça', 'abacate', 'limão', 'laranja', 'melancia', 'lima', 'jaca', 'açai']
+    lista = []
+
+    with open("palavras.txt") as arquivo:
+        lista = [linha.strip() for linha in arquivo]
+
+    #print(lista)
+    index = random.randrange(0,len(lista))
+
+    return lista[index].lower()
+
 
 
 if (__name__ == "__main__"):

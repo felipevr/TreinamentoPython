@@ -1,4 +1,4 @@
-banana
+﻿banana
 maça
 limão
 pera
@@ -6,8 +6,9 @@ melancia
 laranja
 jaca
 lima
-acabate
+abacate
 mamão
 morango
 manga
 uva
+tangerina
