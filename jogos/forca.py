@@ -12,7 +12,15 @@ def hello():
     """)
 
 def pega_palavra_secreta():
-    lista = ['banana', 'maça', 'abacate', 'limão', 'laranja', 'melancia', 'lima', 'jaca', 'açai']
+    #lista = ['banana', 'maça', 'abacate', 'limão', 'laranja', 'melancia', 'lima', 'jaca', 'açai']
+    lista = []
+    arquivo = open("palavras.txt", "r")
+
+    for linha in arquivo:
+        linha = linha.strip()
+        lista.append(linha)
+
+    arquivo.close()
 
     index = random.randrange(0,len(lista))
 
