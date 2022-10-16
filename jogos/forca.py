@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # curso alura
 # https://cursos.alura.com.br/course/python-3-avancando-na-linguagem/
+import random
+
 def hello():
 
     print(""" 
@@ -9,42 +11,64 @@ def hello():
     *************************************
     """)
 
+def pega_palavra_secreta():
+    lista = ['banana', 'maça', 'abacate', 'limão', 'laranja', 'melancia', 'lima', 'jaca', 'açai']
+
+    index = random.randrange(0,len(lista))
+
+    return lista[index].lower()
 
 def jogar():
     
     hello()
     
     branco = '_'
-    palavra_secreta = "banana" #sempre minuscula
-    letras_acertadas = [branco] * len(palavra_secreta)
+    palavra_secreta = pega_palavra_secreta() #sempre minuscula
+    #letras_acertadas = [branco] * len(palavra_secreta)
+    letras_acertadas = ["_" for letra in palavra_secreta]
 
     enforcou = False
     acertou = False
+    erros = 0
 
     print(letras_acertadas)
 
     while(not acertou and not enforcou):
         chute = input("Qual letra? ")
-        chute = chute.strip()
+        chute = chute.strip().lower()
 
 
         index = 0
-        for letra in palavra_secreta:
-            if (chute.lower() == letra):
-                letras_acertadas[index] = letra
-                #print("Encontrei a letra {} na posição {}".format(letra, index))
-            index += 1
+        if (chute in palavra_secreta):
+            for letra in palavra_secreta:
+                if (chute == letra):
+                    letras_acertadas[index] = letra
+                    #print("Encontrei a letra {} na posição {}".format(letra, index))
+                index += 1
+        else:
+            print("Ops, você errou! Faltam {} tentativas.".format(6-erros))
+            erros += 1
+            
 
         print(letras_acertadas)
-        letras_faltando = letras_acertadas.count(branco)
-        if (letras_faltando == 0):
-            break
+        
+        if (branco not in letras_acertadas):
+            acertou = True
+            continue
 
-        print( 'Ainda faltam acertar {} letras'.format(letras_faltando))
+        if (erros >= 6):
+            enforcou = True
+
+        #letras_faltando = letras_acertadas.count(branco)
+        #print( 'Ainda faltam acertar {} letras'.format(letras_faltando))
         #print("Jogando...")
 
+    if (acertou):
+        print('VOCÊ GANHOU ! ! !')
+    else:
+        print('ENFORCADO!!!')
 
-    print("Fim do jogo")
+    #print("Fim do jogo")
 
 
 if (__name__ == "__main__"):
