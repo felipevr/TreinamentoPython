@@ -11,6 +11,7 @@ def jogar():
     branco = '_'
     palavra_secreta = pega_palavra_secreta() #sempre minuscula
     letras_acertadas = gera_letras_acertadas(palavra_secreta, branco)
+    letras_usadas = set()
 
     enforcou = False
     acertou = False
@@ -24,13 +25,14 @@ def jogar():
         chute = pede_chute()
 
         if (chute in palavra_secreta):
-            marca_chute_correto(chute, palavra_secreta, letras_acertadas)
-        else:
+            marca_chute_correto(chute, palavra_secreta, letras_acertadas, letras_usadas)
+        elif (chute not in letras_usadas):
             erros += 1
+            letras_usadas.add(chute)
             desenha_forca(erros, max_erros)
             
 
-        imprime_palavra(letras_acertadas)
+        imprime_palavra(letras_acertadas, letras_usadas)
         enforcou = erros == max_erros
         acertou = "_" not in letras_acertadas
         
@@ -43,13 +45,15 @@ def imprime_msg_final(acertou, palavra_secreta):
         imprime_mensagem_perdedor(palavra_secreta)
         
 
-def marca_chute_correto(chute, palavra_secreta, letras_acertadas):
+def marca_chute_correto(chute, palavra_secreta, letras_acertadas, letras_usadas):
     index = 0
     for letra in palavra_secreta:
         if (chute == letra):
             letras_acertadas[index] = letra
             #print("Encontrei a letra {} na posição {}".format(letra, index))
         index += 1
+    letras_usadas.add(chute)
+
 
 def pede_chute():
     chute = input("Qual letra? ")
@@ -58,8 +62,11 @@ def pede_chute():
 def gera_letras_acertadas(palavra, branco = '_'):
     return [branco for letra in palavra]
 
-def imprime_palavra(letras_acertadas):
-    print(*letras_acertadas, sep=' ')
+def imprime_palavra(letras_acertadas, letras_usadas={}):
+    print(" PALAVRA: ")
+    print("==> ", *letras_acertadas, sep=' ')
+    if (len(letras_usadas) > 0):
+        print(" Letras já informadas: ", letras_usadas)
 
 def mensagem_boas_vindas():
 
