@@ -6,24 +6,28 @@ print("""
 
 numero_secreto = 42
 
-chute_str = input("Digite o seu número: ")
+tentativas_restantes = 3
 
-chute = int(chute_str)
+while (tentativas_restantes > 0):
 
-#print("Você digitou: ", chute)
+    chute_str = input("Digite o seu número: ")
 
-#print(type(numero_secreto))
-#print(type(chute))
+    chute = int(chute_str)
 
-acertou = chute == numero_secreto
-maior = chute > numero_secreto
-menor = chute < numero_secreto
+    acertou = chute == numero_secreto
+    maior = chute > numero_secreto
+    menor = chute < numero_secreto
 
-if (acertou):
-    print("Você acertou!")
-elif (maior):
-    print("Você errou! O seu chute foi maior que o número secreto.")
-elif (menor):
-    print("Você errou! O seu chute foi menor que o número secreto.")
+    if (acertou):
+        print("Você acertou!")
+    elif (maior):
+        print("Você errou! O seu chute foi maior que o número secreto.")
+    elif (menor):
+        print("Você errou! O seu chute foi menor que o número secreto.")
 
-#print("Fim do jogo")
+    tentativas_restantes -= 1
+
+    print("Você tem", tentativas_restantes, "tentativas restantes!")
+
+
+print("Fim do jogo")
