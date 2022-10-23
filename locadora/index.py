@@ -8,7 +8,8 @@ from serie import Serie
 vingadores = Filme('vingadores - guerra infinita', 2018, 160)
 vingadores.dar_like()
 
-atlanta = Serie('atlanta', 2018, 2)
+atlanta = Serie('atlanta', 2018, 2) 
+#atlanta.nome= 'iba daba du'
 
 atlanta.dar_like()
 atlanta.dar_like()
