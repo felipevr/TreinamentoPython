@@ -3,23 +3,35 @@
 
 from filme import Filme
 from serie import Serie
+from playlist import Playlist
 
 
 vingadores = Filme('vingadores - guerra infinita', 2018, 160)
 vingadores.dar_like()
 
 atlanta = Serie('atlanta', 2018, 2) 
-#atlanta.nome= 'iba daba du'
 
 atlanta.dar_like()
 atlanta.dar_like()
   
-# print(f'Nome: {vingadores.nome} - Likes: {vingadores.likes}')
-# print(f'Nome: {atlanta.nome} - Likes: {atlanta.likes}')
+todo = Filme('Todo mundo doido', 1999, 100)
+demo = Serie('Demolidor', 2016, 2)
+
+demo.dar_like()
+demo.dar_like()
+demo.dar_like()
+todo.dar_like()
+todo.dar_like()
+todo.dar_like()
+todo.dar_like()
+todo.dar_like()
 
 
-acervos = [vingadores, atlanta]
 
-for item in acervos:
+acervos = [vingadores, atlanta, demo, todo]
+
+pl_fds = Playlist('fim de semana', acervos)
+
+for item in pl_fds:
     print(item)
 
