@@ -1,7 +1,7 @@
-class Playlist:
+class Playlist(list):
     def __init__(self, nome, lista):
         self._nome = nome
-        self._programas = lista
+        super().__init__(lista)
 
     @property
     def nome(self):
@@ -10,6 +10,3 @@ class Playlist:
     @nome.setter
     def nome(self, novo_nome):
         self._nome = novo_nome.title()
-
-    def tamanho(self):
-        return len(self._programas)
