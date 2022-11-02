@@ -5,3 +5,5 @@ class Serie (Acervo):
         super().__init__(nome, ano)
         self.temporadas = temporadas
         
+    def __str__(self) -> str:
+        return f'{self._nome} - {self.ano} - {self.temporadas} temporadas - {self._likes} Likes'

@@ -21,6 +21,5 @@ atlanta.dar_like()
 acervos = [vingadores, atlanta]
 
 for item in acervos:
-    detalhes = item.duracao if hasattr(item, 'duracao') else item.temporadas
-    print(f'Nome: {item.nome} - {detalhes} - Likes: {item.likes}')
+    print(item)
 

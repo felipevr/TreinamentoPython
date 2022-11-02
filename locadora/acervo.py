@@ -26,6 +26,8 @@ class Acervo:
     def dar_like(self):
         self._likes += 1
 
+    def __str__(self) -> str:
+        return f'{self._nome} - {self.ano} - {self._likes} Likes'
 
     @staticmethod
     def log():
