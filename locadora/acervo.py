@@ -1,10 +1,15 @@
 
-class Artigo:
+class Acervo:
+    base = 5
 
     def __init__(self, nome, ano):
         self._nome = nome.title()
         self.ano = ano
         self._likes = 0
+
+    @classmethod
+    def info(cls):
+        return f'A base é {cls.base}'
 
     @property
     def nome(self):
@@ -20,3 +25,8 @@ class Artigo:
 
     def dar_like(self):
         self._likes += 1
+
+
+    @staticmethod
+    def log():
+        return f'Isso é um log qualquer'

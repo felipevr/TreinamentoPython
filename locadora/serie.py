@@ -1,6 +1,6 @@
-from artigo import Artigo
+from acervo import Acervo
 
-class Serie (Artigo):
+class Serie (Acervo):
     def __init__(self, nome, ano, temporadas):
         super().__init__(nome, ano)
         self.temporadas = temporadas
