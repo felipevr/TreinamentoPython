@@ -3,9 +3,11 @@ class Playlist:
         self._nome = nome
         self._programas = lista
 
-    @property
-    def listagem(self):
-        return self._programas
+    def __getitem__(self, item):
+        return self._programas[item]
+    
+    def __len__(self):
+        return len(self._programas)
 
     @property
     def nome(self):
@@ -14,7 +16,3 @@ class Playlist:
     @nome.setter
     def nome(self, novo_nome):
         self._nome = novo_nome.title()
-
-    @property
-    def tamanho(self):
-        return len(self._programas)
