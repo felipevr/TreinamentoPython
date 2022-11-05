@@ -1,3 +1,4 @@
+#!/usr/bin/python
 
 class Filme():
     def __init__(self, titulo, diretor):        
@@ -24,18 +25,15 @@ def pega_todos_os_filmes():
     
 def tenho_o_filme(filme_procurado):    
     meus_filmes = pega_todos_os_filmes()    
-    for filme in meus_filmes:        
-        if filme_procurado == filme:            
-            return True    
-    return False
+    return filme_procurado in meus_filmes
 
-filme_procurado = Filme('A Teoria de Tudo', 'James Marsh')
+filme_procurado = Filme('A Teoria de Tudo2', 'James Marsh')
 if tenho_o_filme(filme_procurado):    
     print('Tenho o filme!')
 else:    
     print('Não tenho :(')
     
-filme_procurado = Filme('The Matrix', 'Watchowsky')
+filme_procurado = Filme('The Matrix', 'Watchowsky2')
 if tenho_o_filme(filme_procurado):    
     print('Tenho o filme!')
 else:    
