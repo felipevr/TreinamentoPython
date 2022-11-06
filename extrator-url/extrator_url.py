@@ -1,10 +1,8 @@
 class ExtratorURL:
     def __init__(self, url):
         self._url = self.sanitiza_url(url)
-        self._indice_interrogacao = self._url.find('?')
         self.valida_url()
-        self._url_base = self._url[:self._indice_interrogacao]
-        self._url_parametros = self._url[self._indice_interrogacao+1:]
+        self.quebra_url()
     
     def sanitiza_url(self, url):
         if type(url) == str:
@@ -15,8 +13,21 @@ class ExtratorURL:
     def valida_url(self):
         if not self._url:
             raise ValueError('A URL está vazia')
+        if not self._url.startswith('https'):
+            raise ValueError('A URL não inicia com https')
+        
+    def quebra_url(self):
+        self._indice_interrogacao = self._url.find('?')
+        
         if self._indice_interrogacao == -1:
             raise ValueError('A URL não tem parametros')
+        
+        self._url_base = self._url[:self._indice_interrogacao]
+        self._url_parametros = self._url[self._indice_interrogacao+1:]
+        
+        if not self._url_base.endswith('/cambio'):
+            raise ValueError('Esse URL não é da página de cambios')
+        
         
     def get_url_base(self):
         # self.indice_interrogacao = self.url.find('?')

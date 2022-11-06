@@ -6,10 +6,10 @@ url = "https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidad
 #url = "https://bytebank.com/cambio?moedaDestino=dolar&moedaOrigem=real"
 #url = ' '
 #url = None
-#url = "byte/a"
+url = "https/byte/a?v"
 
 extrator_url = ExtratorURL(url)
-# extrator_url = ExtratorURL("   ")
+#extrator_url = ExtratorURL("   ")
 valor_quantidade = extrator_url.get_valor_parametro("moedaOrigem")
 print(valor_quantidade)
 
