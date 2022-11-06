@@ -2,7 +2,7 @@ endereco = 'Rua das Flores 72, apartamento 1002, Laranjeiras, Rio de Janeiro, RJ
 
 import re
 
-padrao = re.compile("[0123456789][0123456789][0123456789][0123456789][0123456789][-]?[0123456789][0123456789][0123456789]")
+padrao = re.compile("[0-9]{5}[-]?[0-9]{3}")
 
 #print(padrao)
 
