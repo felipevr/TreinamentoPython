@@ -5,6 +5,10 @@ class ExtratorURL:
         self._url = self.sanitiza_url(url)
         self.valida_url()
         self.quebra_url()
+        
+    @property
+    def url(self):
+        return self._url
     
     def sanitiza_url(self, url):
         if type(url) == str:
@@ -54,3 +58,11 @@ class ExtratorURL:
             valor = self._url_parametros[indice_valor:indice_separador]
         return valor
     
+    def __len__(self) -> int:
+        return len(self._url)
+    
+    def __str__(self) -> str:
+        return self._url + "\n" + "Parâmetros: " + self.get_url_parametros() + "\n" + "URL Base: " + self.get_url_base()
+
+    def __eq__(self, other):
+        return self._url == other.url
