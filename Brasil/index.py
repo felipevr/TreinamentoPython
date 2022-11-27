@@ -5,7 +5,7 @@
 # from validate_docbr import CPF
 from validate_docbr import CNPJ
 #from Cpf import Cpf
-from cpf_cnpj import CpfCnpj
+from cpf_cnpj import Documento
 
 
 def testes_cnpj():
@@ -14,8 +14,8 @@ def testes_cnpj():
     # print(cnpj.validate(exemplo_cnpj))
     # print(cnpj.generate())
 
-    documento = CpfCnpj(exemplo_cnpj, 'cnpj')
-
+    documento = Documento.cria_documento(exemplo_cnpj)
+    print(type(documento))
     print(documento)
 
 
@@ -26,12 +26,13 @@ def testes_cpf():
     # cpf = CPF().generate()
     # print(cpf)
 
-    objeto_cpf = CpfCnpj(cpf, 'cpf')
-
+    objeto_cpf = Documento.cria_documento(cpf)
+    print(type(objeto_cpf))
     print(objeto_cpf)
 
 
 
 testes_cnpj()
 testes_cpf()
+
 
