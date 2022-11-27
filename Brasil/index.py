@@ -13,6 +13,8 @@ cep = '12345681'
 objeto_cep = BuscaEndereco(cep)
 print(objeto_cep)
 
+bairro, cidade, uf = objeto_cep.consulta_cep()
+
 
 def testes_cnpj():
     exemplo_cnpj = '91778481072370'
