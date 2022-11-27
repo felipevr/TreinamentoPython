@@ -6,6 +6,12 @@
 from validate_docbr import CNPJ
 #from Cpf import Cpf
 from cpf_cnpj import Documento
+from acesso_cep import BuscaEndereco
+
+
+cep = '12345681'
+objeto_cep = BuscaEndereco(cep)
+print(objeto_cep)
 
 
 def testes_cnpj():
@@ -31,8 +37,8 @@ def testes_cpf():
     print(objeto_cpf)
 
 
+# testes_cnpj()
+# testes_cpf()
 
-testes_cnpj()
-testes_cpf()
 
 
