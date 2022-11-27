@@ -2,7 +2,10 @@
 from datetime import timedelta, datetime
 
 
-class Cadastro:
+class Datas:
+    
+    
+    
     def __init__(self):
         self.data_cadastro = datetime.today()
         
@@ -10,9 +13,8 @@ class Cadastro:
         agora = datetime.today() + timedelta(days=15, minutes=20,seconds=30)
         return agora - self.data_cadastro
     
-    
-a = Cadastro()
-b = a.tempo_cadastro()
-print(b)
+    def mes_cadastro(self):
+        mes_cadastro = self.data_cadastro.month
+        return mes_cadastro
 
 

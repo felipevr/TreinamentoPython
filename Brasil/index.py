@@ -7,13 +7,22 @@ from validate_docbr import CNPJ
 #from Cpf import Cpf
 from cpf_cnpj import Documento
 from acesso_cep import BuscaEndereco
+from datas import Datas
 
 
-cep = '12345681'
-objeto_cep = BuscaEndereco(cep)
-print(objeto_cep)
+cadastro = Datas()
+t = cadastro.tempo_cadastro()
+print(t)
+print(cadastro.mes_cadastro())
 
-bairro, cidade, uf = objeto_cep.consulta_cep()
+def testes_cep():
+    cep = '01001000'
+    objeto_cep = BuscaEndereco(cep)
+    print(objeto_cep)
+
+    bairro, cidade, uf = objeto_cep.consulta_cep()
+    
+    print(bairro, cidade, uf)
 
 
 def testes_cnpj():
@@ -39,8 +48,9 @@ def testes_cpf():
     print(objeto_cpf)
 
 
-# testes_cnpj()
-# testes_cpf()
+testes_cnpj()
+testes_cpf()
+testes_cep()
 
 
 
