@@ -9,11 +9,21 @@ from cpf_cnpj import Documento
 from acesso_cep import BuscaEndereco
 from datas import Datas
 
+def testes_data():
+    cadastro = Datas()
+    t = cadastro.tempo_cadastro()
+    print(t)
+    print(cadastro) 
+    print(cadastro.mes_cadastro())
+    print(cadastro.dia_semana())
 
-cadastro = Datas()
-t = cadastro.tempo_cadastro()
-print(t)
-print(cadastro.mes_cadastro())
+    hoje = cadastro.data_cadastro
+    hoje_formatada = hoje.strftime("%d/%m/%Y")
+
+
+    print(hoje)
+    print(hoje_formatada)
+
 
 def testes_cep():
     cep = '01001000'
@@ -51,6 +61,6 @@ def testes_cpf():
 testes_cnpj()
 testes_cpf()
 testes_cep()
-
+testes_data()
 
 
