@@ -3,3 +3,4 @@ python-introducao-a-collections/*
 python-introducao-a-collections2/*
 pios/config.py
 venv/*
+bytebank-tdd/venv/*
