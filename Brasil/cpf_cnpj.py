@@ -1,25 +1,6 @@
 from validate_docbr import CPF
 from validate_docbr import CNPJ
 
-class Documento:
-    
-    @staticmethod
-    def cria_documento(documento):
-        if (len(documento) == 11):
-            return DocCpf(documento)
-        elif len(documento) == 14:
-            return DocCnpj(documento)
-        else:
-            raise ValueError("Quantidade de digitos incorreta")
-        
-        self._documento = documento
-        
-    def valida(self,documento):
-        return self.__validador.validate(documento)
-        
-    def __str__(self):
-        return self.__validador.mask(cpf)
-
 class DocCpf:
     def __init__(self, documento):
         if self.valida(documento):
