@@ -3,7 +3,7 @@ from datetime import date
 class Funcionario:
     
     def __init__(self, nome, data_nascimento, salario) -> None:
-        self._nome = nome
+        self._nome = nome.strip()
         self._data_nascimento = data_nascimento
         self._salario = salario
         
@@ -22,7 +22,7 @@ class Funcionario:
         return ano_atual - int(ano_nascimento)
     
     def sobrenome(self):
-        nome_completo = self._nome.strip()
+        nome_completo = self._nome
         nome_quebrado = nome_completo.split(' ')
         return nome_quebrado[-1]
     

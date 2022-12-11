@@ -1,6 +1,8 @@
 # https://docs.pytest.org/en/7.1.x/how-to/mark.html
+#comando para verificiar cobertura 
+# pytest --cov=codigo tests/
 from codigo.bytebank import Funcionario
-import pytest
+import pytest, sys
 from pytest import mark
 
 class TestClass:
@@ -17,6 +19,15 @@ class TestClass:
         assert resultado == esperado 
         
         #print('Teste = {}'.format())
+        
+    def test_quando_nome_recebe_lucas_carvalho_deve_retornar_lucas(self):
+        entrada = ' Lucas Carvalho ' #Dado
+        esperado = 'Lucas Carvalho'
+        lucas = Funcionario(entrada, '11/11/2000', 1111)
+        
+        resultado = lucas.nome # Quando
+        
+        assert resultado == esperado #Então
         
     def test_quando_sobrenome_recebe_lucas_carvalho_deve_retornar_caravalho(self):
         entrada = ' Lucas Carvalho ' #Dado
@@ -35,6 +46,10 @@ class TestClass:
     @mark.xfail(True, reason="Teste")
     def test_que_deve_falhar(self):
         assert True == False
+        
+    @pytest.mark.skipif(sys.version_info < (3, 1), reason="Requer Python na versão 3")
+    def test_eh_python_3(self):
+        assert True
     
     
     def test_quando_decrescimo_salario_recebe_100000_deve_retornar_90000(self):
@@ -62,9 +77,21 @@ class TestClass:
     def test_quando_calcular_bonus_recebe_1000000_deve_retornar_exception(self):
         #Esperado
         with pytest.raises(Exception):
-            entrada = 1000000 #Given
+            entrada_salario = 1000000 #Given
             
             funcionario_teste = Funcionario('teste', '11/11/1990', entrada_salario)
             resultado = funcionario_teste.calcular_bonus()
             
-            assert resultado == esperado #Então
+            #assert resultado == esperado #Então
+            
+    
+        
+    def test_retorno_str(self):
+        nome, data_nascimento, salario = 'Lucas Carvalho', '13/02/1999', 1000 #Dado - entrada
+        esperado = f'Funcionario({nome}, {data_nascimento}, {salario})'
+        
+        func = Funcionario(nome, data_nascimento, salario)
+        
+        resultado = func.__str__() # Quando
+        
+        assert resultado == esperado #Então
