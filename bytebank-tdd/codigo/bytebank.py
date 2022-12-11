@@ -26,9 +26,12 @@ class Funcionario:
         nome_quebrado = nome_completo.split(' ')
         return nome_quebrado[-1]
     
-    def decrescimo_salario(self):
+    def _eh_socio(self):
         sobrenomes = ['Bragança', 'Windsor', 'Bourbon', 'Yamato', 'Al Saud', 'Khan', 'Tudor', 'Ptolomeu']
-        if self.salario >= 100000 and self.sobrenome() in sobrenomes:
+        return self.sobrenome() in sobrenomes
+    
+    def decrescimo_salario(self):
+        if self.salario >= 100000 and self._eh_socio():
             decrescimo = self.salario * 0.1
             self._salario -= decrescimo
         
