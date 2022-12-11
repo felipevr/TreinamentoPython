@@ -1,5 +1,7 @@
+# https://docs.pytest.org/en/7.1.x/how-to/mark.html
 from codigo.bytebank import Funcionario
 import pytest
+from pytest import mark
 
 class TestClass:
     def test_quando_idade_recebe_13_03_2000_deve_retornar_22(self):
@@ -26,6 +28,15 @@ class TestClass:
         assert resultado == esperado #Então
         
         
+    @mark.skip
+    def test_que_nao_deve_ser_executado(self):
+        assert 1 == 1
+        
+    @mark.xfail(True, reason="Teste")
+    def test_que_deve_falhar(self):
+        assert True == False
+    
+    
     def test_quando_decrescimo_salario_recebe_100000_deve_retornar_90000(self):
         entrada_salario = 100000
         entrada_nome = 'Paulo Bragança'
@@ -37,6 +48,7 @@ class TestClass:
         
         assert resultado == esperado #Então
         
+    @mark.calcular_bonus
     def test_quando_calcular_bonus_recebe_1000_deve_retornar_100(self):
         entrada_salario = 1000
         esperado = 100
@@ -46,6 +58,7 @@ class TestClass:
         
         assert resultado == esperado #Então
         
+    @mark.calcular_bonus
     def test_quando_calcular_bonus_recebe_1000000_deve_retornar_exception(self):
         #Esperado
         with pytest.raises(Exception):
