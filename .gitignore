@@ -4,3 +4,5 @@ python-introducao-a-collections2/*
 pios/config.py
 venv/*
 bytebank-tdd/venv/*
+bytebank-tdd/report.xml
+bytebank-tdd/coverage.xml

@@ -17,6 +17,8 @@ def teste_idade():
 #teste_idade()
 
 
-ana = Funcionario('Ana', '12/03/1997', 10000)
+ana = Funcionario('Ana', '12/03/1997', 100000)
 
 print(ana.calcular_bonus())
+
+
