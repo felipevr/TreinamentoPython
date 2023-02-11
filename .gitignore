@@ -6,3 +6,4 @@ venv/*
 bytebank-tdd/venv/*
 bytebank-tdd/report.xml
 bytebank-tdd/coverage.xml
+Pandas/*
