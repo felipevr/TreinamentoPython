@@ -40,7 +40,7 @@ print('Outro: ', pdf.metadata.creator)
 
 
 l1 = 'Auditor-Fiscal da Receita Federal do Brasil'
-l2 = ''
+l2 = 'Analista-Tributário da Receita Federal do Brasil'
 
 # get a page by the number
 #first_page = pdf.pages[0]
@@ -59,7 +59,13 @@ for i in range(1, len(pdf.pages)):
     
     page = pdf.pages[i]
     
-    print(page.extract_text())
-    break
+    texto = page.extract_text()
+    
+    conta1 += texto.count(l1)
+    conta2 += texto.count(l2)
+    
+    #break
 
+print(l1, ':', conta1)
+print(l2, ':', conta2)
 
